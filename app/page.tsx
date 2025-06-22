@@ -25,11 +25,11 @@ export default function App() {
     listBuddies();
   }, []);
 
-  // function addBuddies() {
-  //   client.models.Todo.create({
-  //     content: window.prompt("Todo content"),
-  //   });
-  // }
+  function addBuddies(buddy_uid:string) {
+    client.models.Buddy.add({
+      buddies.add(buddy_uid),
+    });
+  }
 
   return (
     <main>
