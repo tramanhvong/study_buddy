@@ -13,31 +13,31 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [buddies, setBuddies] = useState<Array<Schema["Buddy"]["type"]>>([]);
 
-  function listTodos() {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
+  function listBuddies() {
+    client.models.Buddy.observeQuery().subscribe({
+      next: (data) => setBuddies([...data.items]),
     });
   }
 
   useEffect(() => {
-    listTodos();
+    listBuddies();
   }, []);
 
-  function createTodo() {
-    client.models.Todo.create({
-      content: window.prompt("Todo content"),
-    });
-  }
+  // function addBuddies() {
+  //   client.models.Todo.create({
+  //     content: window.prompt("Todo content"),
+  //   });
+  // }
 
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1>My Buddies</h1>
+      <button onClick={addBuddies}>+ new</button>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
+        {buddies.map((buddy) => (
+          <li key={buddy.id}>{buddy.content}</li>
         ))}
       </ul>
       <div>
