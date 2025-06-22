@@ -12,6 +12,7 @@ const schema = a.schema({
       name: a.string().required(),
       major: a.string(),
       grad_year: a.integer(),
+      buddies: a.array(a.string()).default([]),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
