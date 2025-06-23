@@ -43,6 +43,8 @@ export default function App() {
 
   return (
     <main>
+      <h1 className="title">Study Buddy Matcher</h1>
+      <a className="hyperlink" href="https://devpost.com/software/study-buddies-cm8asp">An extended project from AKTV's StudyBuddy</a>
       <div className="formField1">
         <p className="form1Title">Contact Information</p>
         <form className="contactForm">
