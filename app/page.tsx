@@ -25,9 +25,9 @@ export default function App() {
     listBuddies();
   }, []);
 
-  function addBuddies(buddy_uid:string) {
-    client.models.Buddy.add({
-      buddies.add(buddy_uid),
+  function addBuddies(buddy: Schema["Buddy"]["type"] = { name: "New Buddy" }) {
+    client.models.Buddy.create({
+      buddy: buddy,
     });
   }
 
@@ -37,7 +37,7 @@ export default function App() {
       <button onClick={addBuddies}>+ new</button>
       <ul>
         {buddies.map((buddy) => (
-          <li key={buddy.id}>{buddy.content}</li>
+          <li key={buddy.id}>{buddy.name}</li>
         ))}
       </ul>
       <div>
