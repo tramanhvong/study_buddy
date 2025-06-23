@@ -13,40 +13,71 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
-  const [buddies, setBuddies] = useState<Array<Schema["Buddy"]["type"]>>([]);
+  // const [buddies, setBuddies] = useState<Array<Schema["Buddy"]["type"]>>([]);
 
-  function listBuddies() {
-    client.models.Buddy.observeQuery().subscribe({
-      next: (data) => setBuddies([...data.items]),
+  // function listBuddies() {
+  //   client.models.Buddy.observeQuery().subscribe({
+  //     next: (data) => setBuddies([...data.items]),
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   listBuddies();
+  // }, []);
+
+  // function addBuddies(buddy: Schema["Buddy"]["type"] = { name: "New Buddy" }) {
+  //   client.models.Buddy.create({
+  //     buddy: buddy,
+  //   });
+  // }
+
+  function submitForm() {
+    const form = document.getElementsByClassName("matchingForm")[0] as HTMLFormElement;
+    const formData = new FormData(form);
+    const data: Record<string, number> = {};
+    
+    formData.forEach((value, key) => {
+      data[key] = parseInt(value as string, 10);
     });
   }
-
-  useEffect(() => {
-    listBuddies();
-  }, []);
-
-  function addBuddies(buddy: Schema["Buddy"]["type"] = { name: "New Buddy" }) {
-    client.models.Buddy.create({
-      buddy: buddy,
-    });
-  }
-
+  
   return (
     <main>
-      <h1>My Buddies</h1>
-      <button onClick={addBuddies}>+ new</button>
-      <ul>
-        {buddies.map((buddy) => (
-          <li key={buddy.id}>{buddy.name}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/">
-          Review next steps of this tutorial.
-        </a>
+      <div className="formField1">
+        <p className="form1Title">Contact Information</p>
+        <form className="contactForm">
+          <label htmlFor="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Your first name here" />
+          <label htmlFor="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Your last name here"/>
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email here"/>
+        </form>
       </div>
+      <div className="formField2">
+        <p className="form2Title">Matching Details</p>
+        <form className="matchingForm">
+          <label htmlFor="age">Age</label>
+          <input type="number" id="age" name="age" placeholder="Your age here"/>
+          <label htmlFor="major">Major</label>
+          <select name="major" id="major" multiple>
+            <option value="1">Mathematics</option>
+            <option value="2">Chemistry</option>
+            <option value="3">Physics</option>
+            <option value="4">Computer Science</option>
+            <option value="5">Biology</option>
+          </select>
+          <label htmlFor="year">Graduation Year</label>
+          <select name="year" id="year">
+            <option value="2026">2024</option>
+            <option value="2027">2025</option>
+            <option value="2028">2026</option>
+            <option value="2029">2027</option>
+            <option value="2030">2028</option>
+          </select>
+        </form>
+      </div>
+      <button onClick={submitForm}>Get Group Suggestion</button>
     </main>
   );
 }
