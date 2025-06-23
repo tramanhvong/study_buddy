@@ -40,7 +40,7 @@ export default function App() {
       data[key] = parseInt(value as string, 10);
     });
   }
-  
+
   return (
     <main>
       <div className="formField1">
@@ -48,8 +48,10 @@ export default function App() {
         <form className="contactForm">
           <label htmlFor="fname">First Name</label>
           <input type="text" id="fname" name="fname" placeholder="Your first name here" />
+          <br/>
           <label htmlFor="lname">Last Name</label>
           <input type="text" id="lname" name="lname" placeholder="Your last name here"/>
+          <br/>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Your email here"/>
         </form>
@@ -59,6 +61,7 @@ export default function App() {
         <form className="matchingForm">
           <label htmlFor="age">Age</label>
           <input type="number" id="age" name="age" placeholder="Your age here"/>
+          <br/>
           <label htmlFor="major">Major</label>
           <select name="major" id="major" multiple>
             <option value="1">Mathematics</option>
@@ -67,6 +70,7 @@ export default function App() {
             <option value="4">Computer Science</option>
             <option value="5">Biology</option>
           </select>
+          <br/>
           <label htmlFor="year">Graduation Year</label>
           <select name="year" id="year">
             <option value="2026">2024</option>
