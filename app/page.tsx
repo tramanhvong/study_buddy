@@ -8,10 +8,16 @@ import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 
+import fs from "fs/promises";
+import nodePickle from "node-pickle";
+
 Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
+const PICKLE_PATH = "./student_cluster.pkl";
+
+const model = await nodePickle.load(await fs.readFile(PICKLE_PATH));
 export default function App() {
   // const [buddies, setBuddies] = useState<Array<Schema["Buddy"]["type"]>>([]);
 
