@@ -65,3 +65,11 @@ body {
     text-decoration: none;
   }
 
+  .ageSelection, .majorSelection, .yearSelection {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .fname, .lname, .email {
+    margin-right: 10px;
+  }

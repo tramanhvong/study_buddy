@@ -48,39 +48,48 @@ export default function App() {
       <div className="formField1">
         <p className="form1Title">Contact Information</p>
         <form className="contactForm">
-          <label htmlFor="fname">First Name</label>
+          <label htmlFor="fname" className="fname">First Name</label>
           <input type="text" id="fname" name="fname" placeholder="Your first name here" />
           <br/>
-          <label htmlFor="lname">Last Name</label>
+          <label htmlFor="lname" className="lname">Last Name</label>
           <input type="text" id="lname" name="lname" placeholder="Your last name here"/>
           <br/>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Your email here"/>
         </form>
       </div>
       <div className="formField2">
         <p className="form2Title">Matching Details</p>
+
         <form className="matchingForm">
-          <label htmlFor="age">Age</label>
-          <input type="number" id="age" name="age" placeholder="Your age here"/>
-          <br/>
-          <label htmlFor="major">Major</label>
-          <select name="major" id="major" multiple>
-            <option value="1">Mathematics</option>
-            <option value="2">Chemistry</option>
-            <option value="3">Physics</option>
-            <option value="4">Computer Science</option>
-            <option value="5">Biology</option>
-          </select>
-          <br/>
-          <label htmlFor="year">Graduation Year</label>
-          <select name="year" id="year">
-            <option value="2026">2024</option>
-            <option value="2027">2025</option>
-            <option value="2028">2026</option>
-            <option value="2029">2027</option>
-            <option value="2030">2028</option>
-          </select>
+
+          <div className="ageSelection">
+            <label htmlFor="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Your age here"/>
+          </div>
+          
+          <div className="majorSelection">
+            <label htmlFor="major">Major</label><br/>
+            <select name="major" id="major" multiple>
+              <option value="1">Mathematics</option>
+              <option value="2">Chemistry</option>
+              <option value="3">Physics</option>
+              <option value="4">Computer Science</option>
+              <option value="5">Biology</option>
+            </select>
+          </div>
+
+          <div className="yearSelection"> 
+            <label htmlFor="year">Graduation Year</label>
+            <select name="year" id="year">
+              <option value="2026">2024</option>
+              <option value="2027">2025</option>
+              <option value="2028">2026</option>
+              <option value="2029">2027</option>
+              <option value="2030">2028</option>
+            </select>
+          </div>
+
         </form>
       </div>
       <button onClick={submitForm}>Get Group Suggestion</button>
