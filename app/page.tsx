@@ -13,12 +13,24 @@ import nodePickle from "node-pickle";
 
 Amplify.configure(outputs);
 
-const client = generateClient<Schema>();
+// const client = generateClient<Schema>();
 
-const PICKLE_PATH = "./student_cluster.pkl";
+// const PICKLE_PATH = "./student_cluster.pkl";
 
-const model = await nodePickle.load(await fs.readFile(PICKLE_PATH));
+
+// export async function loadPickleModel() {
+// const model = await nodePickle.load(await fs.readFile(PICKLE_PATH));
+// }
+
 export default function App() {
+  const [model, setModel] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/load-model')
+      .then(res => res.json())
+      .then(data => setModel(data.model))
+      .catch(err => console.error('Error:', err));
+  }, []);
   // const [buddies, setBuddies] = useState<Array<Schema["Buddy"]["type"]>>([]);
 
   // function listBuddies() {
@@ -45,6 +57,9 @@ export default function App() {
     formData.forEach((value, key) => {
       data[key] = parseInt(value as string, 10);
     });
+    
+    alert(JSON.stringify(formData));
+
   }
 
   return (
